@@ -1,0 +1,88 @@
+.roundpanel 
+{
+	width: 100%;
+	height: 100%;
+	
+	//position: absolute;
+}
+
+.roundbox {
+	position: relative;
+}
+
+.roundcontainer{
+	backdrop-filter: blur(10px);
+	
+	background-color: rgba(0, 0, 0, 0.4);
+	
+	width: 85%;
+	height: 120px;
+	
+	border-radius: 20px;
+	
+	position: relative;
+	
+	display: flex;
+	flex-direction: column;
+	
+	margin: 25px;
+	
+	// TODO: This just doesn't do anything?? why?
+	overflow: hidden;
+
+	.rcontainertext {
+		.title
+		{
+			padding: 50px;
+			font-family: Poppins;
+			font-size: 50px;
+			font-weight: 900;
+			color: white;
+			//position: absolute;
+			//left: 100px;
+			//top: 100px;
+
+			position: relative;
+
+			align-items: center;
+
+			display: flex;
+			justify-content: center;
+			
+			width: 95%;
+
+			//text-shadow: 5px 5px 10px rgba( black, 0.9 );
+		}
+		
+		.time {
+			color: white;
+			width: 8%;
+			justify-content: center;
+			display: flex;
+			height: 100%;
+			align-items: center;
+			
+			font-family: Poppins;
+			font-size: 60px;
+		}
+	}
+	
+	
+
+	.timerprogress {
+		position: absolute; left: 0; bottom: 0;
+		
+		background-color: white;
+		width: 100%;
+		height: 8%;
+		
+		border-radius: 20px;
+		
+		
+	}
+
+	.nodisplay {
+		display: none;
+	}
+}
+

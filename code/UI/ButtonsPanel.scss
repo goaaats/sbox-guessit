@@ -1,0 +1,168 @@
+﻿
+$button-inactive: rgba(10, 97, 203, 0.65) !default;
+$button-inactive-bottom: $button-inactive !default;
+$button-inactive-fg: white !default;
+
+$button-active: rgba(10, 97, 203, 0.45) !default;
+$button-active-fg: white !default;
+
+$button-size: 50px;
+
+.button
+{
+  font-family: Poppins;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: $button-inactive;
+  padding: 8px 16px;
+  border-radius: 100px;
+  color: $button-inactive-fg;
+  align-items: center;
+  min-height: $button-size;
+
+  transition: background-color 0.1s ease-in;
+
+  > iconpanel
+  {
+    font-size: 22px;
+  }
+
+  &.has-label > iconpanel
+  {
+    margin-right: 10px;
+  }
+
+  &:hover
+  {
+    background-color: $button-active;
+    color: $button-active-fg;
+
+    &:not( .active )
+    {
+      sound-in: ui.button.over;
+    }
+  }
+
+  &.active
+  {
+    background-color: $button-active;
+    color: $button-active-fg;
+  }
+
+  &:active
+  {
+    sound-in: ui.button.press;
+    background-color: $button-active-fg;
+    color: $button-active;
+  }
+
+  &.tight
+  {
+    padding: 8px 8px;
+    height: $button-size;
+    min-width: $button-size;
+    justify-content: center;
+  }
+}
+
+.click-sound
+{
+  &:active
+  {
+    sound-in: ui.button.press;
+  }
+}
+
+.button_group
+{
+  .button
+  {
+    margin-right: 0;
+    margin-left: 0;
+    border-radius: 0;
+
+    &:first-child
+    {
+      border-radius: 100px 0 0 100px;
+    }
+
+    &:last-child
+    {
+      border-radius: 0 100px 100px 0;
+    }
+  }
+}
+
+.btnpanel {
+  position: absolute;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  width: 100%;
+  height: 100%;
+}
+
+.btncontainer {
+  padding: 20px;
+  
+  display: flex;
+  justify-content: center;
+  
+  .button {
+    margin: 10px;
+  }
+}
+
+.nodisplay {
+  display: none;
+}
+
+.textcontainer {
+  padding: 20px;
+  
+  display: flex;
+  justify-content: center;
+  
+  font-family: Poppins;
+  font-size: 30px;
+  color: white;
+
+  .nodisplay {
+    display: none;
+  }
+}
+
+.flexcontainer {
+  backdrop-filter: blur(10px);
+  
+  background-color: rgba(0, 0, 0, 0.55);;
+
+  position: relative;
+  display: flex;
+  
+  flex-direction: column;
+
+  width: 30%;
+  height: 250px;
+  border-radius: 32px;
+
+  &.nodisplay {
+    display: none;
+  }
+}
+
+.alert {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  right: 0;
+  font-size: 32px;
+
+  text-align: center;
+  
+  font-family: Poppins;
+  color: rgba(191, 191, 191, 0.36);
+}

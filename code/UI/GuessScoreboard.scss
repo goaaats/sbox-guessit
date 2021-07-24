@@ -1,0 +1,171 @@
+﻿.scoreboard
+{
+  position: relative;
+  width: 18%;
+  height: 100%;
+  //background-color: #0a61cb;
+  padding: 20px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+
+  .nodisplay {
+    display: none;
+  }
+  
+  .editicon
+  {
+    font-size: 30px;
+    color: white;
+    font-family: MaterialIcons;
+    padding: 10px;
+    
+    z-index: 100;
+
+    height: 50px;
+
+    transform: scale(1);
+    text-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+    //animation: pulse 2s infinite; TODO: not a thing yet
+    
+    //display: none;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+  }
+  
+  .canvas 
+  {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    //margin-top: 30px;
+    
+    .playerentry
+    {
+      align-items: center;
+
+      backdrop-filter: blur(10px);
+      
+      padding: 12px 12px;
+      
+      border-radius: 8%;
+      
+      background-color: rgba(0, 0, 0, 0.35);
+      display: flex;
+      width: 100%;
+      
+      transition: background-color 0.5s ease-in;
+
+      &.drawing {
+        background-color: rgba(10, 97, 203, 0.35);
+        font-size: 200px;
+      }
+
+      &.solved {
+        background-color: rgba(59, 255, 8, 0.35);
+        font-size: 200px;
+      }
+      
+      //border-bottom: 1px solid red;
+      
+      margin: 4px 0;
+      
+      .container{
+        width: 100%;
+        
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center;
+        
+        position: relative;
+        
+        .left {
+          display: flex;
+          
+          .namepts{
+            display: flex; 
+            flex-direction: column;
+          }
+        }
+      }
+    }
+    
+    .name, .points, .rank {
+      font-family: Poppins;
+    }
+    
+    .name {
+      color: white; 
+      font-size: 20px; 
+      font-weight: 700;
+    }
+    
+    .points {
+      color: white; 
+      font-size: 16px; 
+      font-weight: 500;
+    }
+    
+    .rank {
+      color: white; 
+      font-size: 24px; 
+      font-weight: 500;
+      
+      height: 50px;
+
+      padding: 10px;
+    }
+    
+    .avatarcontainer {
+      .avatar {
+        margin-left: 2px;
+        margin-right: 14px;
+        height: 100%;
+        width: 50px;
+
+        border-radius: 50%;
+      }
+      
+      .avatar-crown{
+        width: 48px;
+        height: 48px;
+        background-image: url(/ui/crown.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        
+        position: absolute;
+        
+        top: -25px;
+        left: -10px;
+        z-index: 1000;
+        
+        transform: rotate(-20deg);
+        
+
+      }
+
+      .avatar-crown-nodisplay {
+        display: none;
+      }
+    }
+    
+    
+  }
+
+  
+}
