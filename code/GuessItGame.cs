@@ -320,7 +320,7 @@ namespace guessit
 		{
 			Host.AssertClientOrMenu();
 			
-			Log.Info( $"Painting {Toolbar.Instance.ActiveColor}" );
+			//Log.Info( $"Painting {Toolbar.Instance.ActiveColor}" );
 			
 			var mat = Material.Load( $"materials/paint{Toolbar.Instance.ActiveColor}.vmat" );
 
