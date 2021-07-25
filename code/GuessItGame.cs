@@ -141,6 +141,10 @@ namespace guessit
 			if ( CurrentPlayer == null )
 			{
 				Log.Error( "No more players left for this round!" );
+
+				// TODO: This is a workaround until periods are finished for real
+				PlayedThisPeriod.Clear();
+				StartNextRound();
 				return;
 			}
 			
