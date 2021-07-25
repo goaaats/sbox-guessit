@@ -227,6 +227,7 @@ namespace guessit
 			base.PostLevelLoaded();
 		}
 
+		[ClientRpc]
 		public void ClearCanvas()
 		{
 			Log.Info( "ClearCanvas()" );
