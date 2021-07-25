@@ -1,5 +1,4 @@
-﻿
-using Sandbox;
+﻿using Sandbox;
 using Sandbox.Hooks;
 using Sandbox.UI;
 using Sandbox.UI.Construct;

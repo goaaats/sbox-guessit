@@ -12,6 +12,7 @@ namespace guessit
 		public Words()
 		{
 			this.wordList = FileSystem.Mounted.ReadJson<List<string>>( "data/words.json" );
+			this.wordList = this.wordList.Select(x => x.ToLowerInvariant()).ToList();
 			Log.Info( $"Loaded {this.wordList.Count} words!" );
 		}
 
