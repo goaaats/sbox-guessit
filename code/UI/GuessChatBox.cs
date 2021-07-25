@@ -100,7 +100,7 @@ namespace guessit.UI
 				return;
 
 			if ( GuessItGame.Instance.CurrentRound == RoundKind.InGame &&
-			     message.Contains( GuessItGame.Instance.CurrentWord ))
+			     message.ToLowerInvariant().Contains( GuessItGame.Instance.CurrentWord ))
 			{
 				if ( ConsoleSystem.Caller.Pawn == GuessItGame.Instance.CurrentPlayer )
 				{
