@@ -84,7 +84,7 @@ namespace guessit
 
 			if ( !Instance.CanStartGame )
 			{
-				Log.Error( "Can't start game with this amount of players." );
+				Log.Error( "Can't start game with less than two players." );
 				return;
 			}
 			
@@ -224,15 +224,9 @@ namespace guessit
 		{
 			_ = StartSecondTimer();
 
-			if ( IsServer )
-			{
-				//var cue = new PoolCue();
-				//Cue = cue;
-			}
-
 			base.PostLevelLoaded();
 		}
-		
+
 		public void ClearCanvas()
 		{
 			Log.Info( "ClearCanvas()" );
