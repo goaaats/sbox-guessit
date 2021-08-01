@@ -14,7 +14,7 @@ Layer0
 	TextureAmbientOcclusion "[1.000000 1.000000 1.000000 0.000000]"
 
 	//---- Color ----
-	TextureColor "[0.772549 0.184314 0.184314 1.000000]"
+	TextureColor "[1.000000 1.000000 0.000000 1.000000]"
 
 	//---- Fog ----
 	g_bFogEnabled "0"

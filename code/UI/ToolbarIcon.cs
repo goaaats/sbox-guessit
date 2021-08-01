@@ -5,7 +5,9 @@ namespace guessit.UI
 {
 	public class ToolbarIcon : Panel
 	{
-		public string TargetColor;
+		public string TargetColorName;
+		public Color BackgroundColor;
+		
 		public Label Label;
 		public Label Number;
 

@@ -12,7 +12,7 @@ namespace guessit.UI
 
 		private int activeSlot = 0;
 
-		public string ActiveColor => this.slots[this.activeSlot].TargetColor;
+		public string ActiveColorName => this.slots[this.activeSlot].TargetColorName;
 		
 		public Toolbar()
 		{
@@ -28,31 +28,40 @@ namespace guessit.UI
 				switch ( i )
 				{
 					case 0: 
-						icon.TargetColor = "red";
+						icon.TargetColorName = "red";
+						icon.BackgroundColor = Color.Red.WithAlpha( 0.3f );;
 						break;
 					case 1: 
-						icon.TargetColor = "blue";
+						icon.TargetColorName = "blue";
+						icon.BackgroundColor = Color.Blue.WithAlpha( 0.3f );
 						break;
 					case 2: 
-						icon.TargetColor = "brown";
+						icon.TargetColorName = "brown";
+						icon.BackgroundColor = Color.Parse( "#8f4f00" ).Value.WithAlpha( 0.3f );
 						break;
 					case 3: 
-						icon.TargetColor = "orange";
+						icon.TargetColorName = "orange";
+						icon.BackgroundColor = Color.Orange.WithAlpha( 0.3f );
 						break;
 					case 4: 
-						icon.TargetColor = "green";
+						icon.TargetColorName = "green";
+						icon.BackgroundColor = Color.Green.WithAlpha( 0.3f );
 						break;
 					case 5: 
-						icon.TargetColor = "purple";
+						icon.TargetColorName = "purple";
+						icon.BackgroundColor = Color.Parse( "#8f34eb" ).Value.WithAlpha( 0.3f );
 						break;
 					case 6: 
-						icon.TargetColor = "red";
+						icon.TargetColorName = "yellow";
+						icon.BackgroundColor = Color.Yellow.WithAlpha( 0.3f );
 						break;
 					case 7: 
-						icon.TargetColor = "red";
+						icon.TargetColorName = "red";
+						icon.BackgroundColor = Color.Red.WithAlpha( 0.3f );
 						break;
 					case 8: 
-						icon.TargetColor = "clear";
+						icon.TargetColorName = "clear";
+						icon.BackgroundColor = Color.Red.WithAlpha( 0.3f );
 						break;
 				}
 				
@@ -66,7 +75,7 @@ namespace guessit.UI
 
 			for ( var i = 0; i < this.slots.Count; i++ )
 			{
-				UpdateIcon( this.slots[i].TargetColor, this.slots[i], i );
+				UpdateIcon( this.slots[i].TargetColorName, this.slots[i], i );
 			}
 		}
 
@@ -80,8 +89,10 @@ namespace guessit.UI
 			}
 			*/
 
-			inventoryIcon.TargetColor = color;
+			inventoryIcon.TargetColorName = color;
 			inventoryIcon.Label.Text = color.ToString();
+			inventoryIcon.Style.BackgroundColor = inventoryIcon.BackgroundColor;
+			inventoryIcon.Style.Dirty();
 			inventoryIcon.SetClass( "active", i == this.activeSlot );
 		}
 
