@@ -84,7 +84,7 @@ namespace guessit
 
 			if ( !Instance.CanStartGame )
 			{
-				Log.Error( "Can't start game with this amount of players." );
+				Log.Error( "Can't start game with less than two players." );
 				return;
 			}
 			
@@ -141,6 +141,10 @@ namespace guessit
 			if ( CurrentPlayer == null )
 			{
 				Log.Error( "No more players left for this round!" );
+
+				// TODO: This is a workaround until periods are finished for real
+				PlayedThisPeriod.Clear();
+				StartNextRound();
 				return;
 			}
 			
@@ -224,15 +228,10 @@ namespace guessit
 		{
 			_ = StartSecondTimer();
 
-			if ( IsServer )
-			{
-				//var cue = new PoolCue();
-				//Cue = cue;
-			}
-
 			base.PostLevelLoaded();
 		}
-		
+
+		[ClientRpc]
 		public void ClearCanvas()
 		{
 			Log.Info( "ClearCanvas()" );
@@ -321,7 +320,7 @@ namespace guessit
 		{
 			Host.AssertClientOrMenu();
 			
-			Log.Info( $"Painting {Toolbar.Instance.ActiveColor}" );
+			//Log.Info( $"Painting {Toolbar.Instance.ActiveColor}" );
 			
 			var mat = Material.Load( $"materials/paint{Toolbar.Instance.ActiveColor}.vmat" );
 
