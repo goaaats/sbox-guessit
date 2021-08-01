@@ -56,12 +56,12 @@ namespace guessit.UI
 						icon.BackgroundColor = Color.Yellow.WithAlpha( 0.3f );
 						break;
 					case 7: 
-						icon.TargetColorName = "red";
-						icon.BackgroundColor = Color.Red.WithAlpha( 0.3f );
+						icon.TargetColorName = "black";
+						icon.BackgroundColor = Color.Black.WithAlpha( 0.3f );
 						break;
 					case 8: 
 						icon.TargetColorName = "clear";
-						icon.BackgroundColor = Color.Red.WithAlpha( 0.3f );
+						icon.BackgroundColor = Color.White.WithAlpha( 0.1f );
 						break;
 				}
 				
