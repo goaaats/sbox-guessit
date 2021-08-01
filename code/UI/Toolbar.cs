@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using guessit.Player;
 using Sandbox;
 using Sandbox.UI;
 
@@ -59,7 +60,7 @@ namespace guessit.UI
 						icon.TargetColorName = "black";
 						icon.BackgroundColor = Color.Black.WithAlpha( 0.3f );
 						break;
-					case 8: 
+					case 8:
 						icon.TargetColorName = "clear";
 						icon.BackgroundColor = Color.White.WithAlpha( 0.1f );
 						break;
@@ -140,9 +141,11 @@ namespace guessit.UI
 				SetActiveSlot( 7 );
 			}
 
+			// Clears the canvas? Maybe?
 			if ( input.Pressed( InputButton.Slot9 ) )
 			{
-				SetActiveSlot( 8 );
+				SetActiveSlot( 1 );
+				GuessItGame.Instance.AddToast( Local.Pawn as GuessPlayer, "Canvas cleared!" );
 			}
 
 			if ( input.MouseWheel != 0 )
