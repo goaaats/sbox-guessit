@@ -28,13 +28,15 @@ namespace guessit.Player
 			//
 			// Use ThirdPersonCamera (you can make your own Camera for 100% control)
 			//
-			//Camera = new ThirdPersonCamera();
+			//Camera = new TopDownFollowCamera();
 			Camera = new StaticCamera();
 
 			EnableAllCollisions = false;
 			EnableDrawing = true;
 			EnableHideInFirstPerson = true;
 			EnableShadowInFirstPerson = true;
+			
+			this.Dress();
 
 			base.Respawn();
 		}
@@ -48,7 +50,7 @@ namespace guessit.Player
 		public void PlaceOnCanvas()
 		{
 			EnableShadowCasting = true;
-			Position = new Vector3( -608, -2286, 64 );
+			Position = new Vector3( -990, -1210, 64 );
 		}
 
 		// TODO this is terrible
