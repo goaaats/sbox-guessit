@@ -22,9 +22,10 @@ namespace guessit.UI
 			this.StyleSheet.Load( "/ui/Toolbar.scss" );
 			AddClass( "InventoryBar" );
 			
-			for ( var i = 0; i < 9; i++ )
+			for ( var i = 0; i < 10; i++ )
 			{
-				var icon = new ToolbarIcon( i + 1, this );
+				var num = i == 9 ? 0 : i + 1;
+				var icon = new ToolbarIcon( num, this );
 
 				switch ( i )
 				{
@@ -61,6 +62,10 @@ namespace guessit.UI
 						icon.BackgroundColor = Color.Black.WithAlpha( 0.3f );
 						break;
 					case 8:
+						icon.TargetColorName = "white";
+						icon.BackgroundColor = Color.White.WithAlpha( 0.3f );
+						break;
+					case 9:
 						icon.TargetColorName = "clear";
 						icon.BackgroundColor = Color.White.WithAlpha( 0.1f );
 						break;
@@ -140,11 +145,15 @@ namespace guessit.UI
 			{
 				SetActiveSlot( 7 );
 			}
-
-			// Clears the canvas? Maybe?
+			
 			if ( input.Pressed( InputButton.Slot9 ) )
 			{
-				SetActiveSlot( 0 );
+				SetActiveSlot( 8 );
+			}
+			
+			// Clears the canvas? Maybe?
+			if ( input.Pressed( InputButton.Slot0 ) )
+			{
 				GuessItGame.ClearCanvas();
 				GuessItGame.Instance.AddToast( Local.Pawn as GuessPlayer, "Canvas cleared!" );
 			}
@@ -170,7 +179,7 @@ namespace guessit.UI
 				nextSlot += this.slots.Count;
 			}
 
-			while ( nextSlot >= this.slots.Count )
+			while ( nextSlot >= this.slots.Count - 1 )
 			{
 				nextSlot -= this.slots.Count;
 			}

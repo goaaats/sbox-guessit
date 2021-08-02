@@ -49,8 +49,9 @@ namespace guessit
 		public RoundKind CurrentRound { get; set; }
 
 		public List<string> Candidates { get; set; } = new List<string>();
-
+		
 		public Words Words { get; private set; }
+		
 
 		public GuessItGame()
 		{
@@ -102,6 +103,8 @@ namespace guessit
 			Instance.RoundStartTime = DateTimeOffset.Now;
 			Instance.CurrentRound = RoundKind.InGame;
 			Instance.CurrentWord = word;
+
+			ClearSolvedState();
 			
 			using ( Prediction.Off() )
 			{
@@ -218,7 +221,7 @@ namespace guessit
 			}
 		}
 
-		public void ClearSolvedState()
+		public static void ClearSolvedState()
 		{
 			Host.AssertServer();
 
@@ -267,22 +270,15 @@ namespace guessit
 		private void OnSecond()
 		{
 			//Log.Info( $"OnSecond: {IsServer} {this.GetSecondsLeft()} {HasGivenHint}" );
-			if ( CurrentRound == RoundKind.InGame)
-			{
-				if ( this.GetSecondsLeft() == 0 )
-				{
-					//CurrentRound = RoundKind.InGameAfterRound;
-					// TODO Results screen etc etc
-					StartNextRound();
-				}
-			}
 		}
 		
 		[Event("tick")]
 		private void Tick()
 		{
 			if ( IsServer )
-			{
+			{ 
+				//Log.Info( $"Tick: {CurrentRound} {this.GetSecondsLeft()} {HasGivenHint}" );
+				
 				if ( CurrentRound == RoundKind.InGame && this.GetSecondsLeft() < 10.0 && !HasGivenHint )
 				{
 					var rng = new Random();
@@ -303,6 +299,10 @@ namespace guessit
 					
 					HasGivenHint = true;
 				}
+				else if ( CurrentRound == RoundKind.InGame && this.GetSecondsLeft() == 0 )
+				{
+					StartNextRound();
+				}
 			}
 		}
 		
@@ -318,16 +318,22 @@ namespace guessit
 			ToastList.Current.AddItem( player, text, iconClass );
 		}
 		
-		//TODO!!! I don't want to use decals at all for this
+		//TODO!!! This sucks, decals don't network correctly atm
+		[ServerCmd]
+		public static void PlacePaint( Vector3 position, string colorName )
+		{
+			Host.AssertServer();
+
+			Instance.PlacePaintClient( To.Everyone, position, colorName );
+		}
+
 		[ClientRpc]
-		public void PlacePaint( Vector3 position )
+		public void PlacePaintClient( Vector3 position, string colorName )
 		{
 			Host.AssertClientOrMenu();
 			
-			//Log.Info( $"Painting {Toolbar.Instance.ActiveColor}" );
+			var mat = Material.Load( $"materials/paint{colorName}.vmat" );
 			
-			var mat = Material.Load( $"materials/paint{Toolbar.Instance.ActiveColorName}.vmat" );
-
 			Decals.Place( mat, position, 17.0f, Rotation.LookAt( Vector3.Up ));
 		}
 

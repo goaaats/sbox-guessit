@@ -1,5 +1,6 @@
 ﻿using Sandbox;
 using guessit.Player.Camera;
+using guessit.UI;
 
 namespace guessit.Player
 {
@@ -76,7 +77,7 @@ namespace guessit.Player
 			//
 			// If we're running serverside and Attack1 was just pressed, spawn a ragdoll
 			//
-			if ( IsServer && Input.Down( InputButton.Attack1 ) || Input.Down( InputButton.Jump ) )
+			if ( IsClient && ( Input.Down( InputButton.Attack1 ) || Input.Down( InputButton.Jump ) ) )
 			{
 				//if (this.cntPlaced % 1 != 0)
 				//	return;
@@ -90,8 +91,8 @@ namespace guessit.Player
 				ragdoll.PhysicsGroup.Velocity = EyeRot.Forward * 1000;
 				*/
 				//var mat = Material.Load( "materials/decals/decalgraffiti001b.vmat" );
-				
-				GuessItGame.Instance.PlacePaint( Position );
+
+				GuessItGame.PlacePaint( Position, Toolbar.Instance.ActiveColorName );
 			}
 			
 			//DebugOverlay.ScreenText( new Vector2( 30, 40 ), Position.ToString() );
