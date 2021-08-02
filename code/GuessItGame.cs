@@ -324,7 +324,7 @@ namespace guessit
 			
 			var mat = Material.Load( $"materials/paint{Toolbar.Instance.ActiveColorName}.vmat" );
 
-			Decals.Place( mat, position, 17.0f, Rotation.Identity);
+			Decals.Place( mat, position, 17.0f, Rotation.LookAt( Vector3.Up ));
 		}
 
 		/// <summary>

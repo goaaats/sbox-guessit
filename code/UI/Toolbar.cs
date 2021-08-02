@@ -144,7 +144,8 @@ namespace guessit.UI
 			// Clears the canvas? Maybe?
 			if ( input.Pressed( InputButton.Slot9 ) )
 			{
-				SetActiveSlot( 1 );
+				SetActiveSlot( 0 );
+				GuessItGame.Instance.ClearCanvas();
 				GuessItGame.Instance.AddToast( Local.Pawn as GuessPlayer, "Canvas cleared!" );
 			}
 
