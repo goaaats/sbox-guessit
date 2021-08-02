@@ -40,7 +40,7 @@ namespace guessit.Player.Camera
 				Pos = targetPos;
 			}
 			
-			DebugOverlay.ScreenText( new Vector2( 30, 30 ), Pos.ToString() );
+			DebugOverlay.ScreenText( new Vector2( 20, 20 ), Pos.ToString() );
 
 			Viewer = null;
 		}

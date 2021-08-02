@@ -4,7 +4,7 @@
 	{
 		public override void Activated()
 		{
-			Pos = new Vector3( -608, -2286, 400 );
+			Pos = new Vector3( -990, -1210, 470 );
 			Rot = Rotation.LookAt( Vector3.Down );
 
 			base.Activated();
