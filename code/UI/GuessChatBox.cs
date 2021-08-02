@@ -122,6 +122,8 @@ namespace guessit.UI
 				ConsoleSystem.Caller.SetScore( "points", score );
 				ConsoleSystem.Caller.SetScore( "solved", true );
 			
+				GuessItGame.Instance.RecalculateRanks();
+			
 				AddChatEntry( To.Everyone, "System", $"{ConsoleSystem.Caller.Name} solved!", $"avatar:{ConsoleSystem.Caller.SteamId}" );
 				return;
 			}
