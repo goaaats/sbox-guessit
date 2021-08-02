@@ -96,7 +96,7 @@ namespace guessit.Player
 			
 			//DebugOverlay.ScreenText( new Vector2( 30, 40 ), Position.ToString() );
 			
-			if ( IsServer && Input.Pressed( InputButton.Attack2 ) )
+			if ( IsClient && Input.Pressed( InputButton.Attack2 ) )
 			{
 				/*
 				var ragdoll = new ModelEntity();
@@ -107,7 +107,7 @@ namespace guessit.Player
 				ragdoll.PhysicsGroup.Velocity = EyeRot.Forward * 1000;
 				*/
 
-				GuessItGame.Instance.ClearCanvas();
+				GuessItGame.ClearCanvas();
 				Log.Info( "Removing all decals..." );
 			}
 		}

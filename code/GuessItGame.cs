@@ -149,6 +149,8 @@ namespace guessit
 			}
 			
 			HasGivenHint = false;
+			
+			AddToast( To.Everyone, CurrentPlayer, $"Next up: {CurrentPlayer.GetClientOwner().Name}" );
 
 			CurrentPlayer.PlaceOnCanvas();
 			
@@ -198,6 +200,8 @@ namespace guessit
 				RoundStartTime = DateTimeOffset.Now;
 			
 			CurrentRound = round;
+			
+			AddToast( To.Everyone, CurrentPlayer, $"{CurrentPlayer.GetClientOwner().Name} is drawing!" );
 		}
 
 		public void RecalculateRanks()
@@ -231,8 +235,8 @@ namespace guessit
 			base.PostLevelLoaded();
 		}
 
-		[ClientRpc]
-		public void ClearCanvas()
+		[ServerCmd("guess_clear")]
+		public static void ClearCanvas()
 		{
 			Log.Info( "ClearCanvas()" );
 			
